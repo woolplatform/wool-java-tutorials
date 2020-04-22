@@ -1,7 +1,8 @@
 package org.example;
 
-import nl.rrd.wool.model.WoolDialogue;
-import nl.rrd.wool.parser.WoolParser;
+import eu.woolplatform.wool.model.WoolDialogue;
+import eu.woolplatform.wool.parser.WoolParser;
+import eu.woolplatform.wool.parser.WoolParserResult;
 
 import java.io.File;
 import java.io.IOException;
@@ -40,17 +41,17 @@ public class CommandLineRunner {
         }
 
         // Initialize a ReadResult where the results of the parse will be stored
-        WoolParser.ReadResult readResult;
+        WoolParserResult parserResult;
 
         try {
             // Create a new WoolParser for the given file
             WoolParser parser = new WoolParser(file);
 
             // Parse the WOOL script and store the results in readResult
-            readResult = parser.readDialogue();
+            parserResult = parser.readDialogue();
 
             // Retrieve the WoolDialogue representation from the readResult
-            WoolDialogue woolDialogue = readResult.getDialogue();
+            WoolDialogue woolDialogue = parserResult.getDialogue();
 
             // Output some basic information about the WOOL script
             System.out.println(woolDialogue.toString());
